@@ -5,4 +5,5 @@ export const path = {
   SERIES: "/series",
   SERIE_ID: "/series/:id",
   LOGIN: "/login-admin",
+  ADMIN_HOME: "/home-admin",
 };
