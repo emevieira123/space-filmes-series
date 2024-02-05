@@ -6,6 +6,7 @@ import Login from "../app/features/Login"
 import { Admin } from "../shared/layouts/Admin"
 import { PrivateRouter } from "./PrivateRouter"
 import AdminHome from "../app/features/AdminHome"
+import AdminFilmes from "../app/features/AdminFilmes"
 
 export default function MainRoutes() {
   return (
@@ -18,6 +19,7 @@ export default function MainRoutes() {
 
       <Route path="/" element={<Admin />}>
         <Route path={path.ADMIN_HOME} element={<PrivateRouter element={<AdminHome />} />} />
+        <Route path={path.ADMIN_FILMES} element={<PrivateRouter element={<AdminFilmes />} />} />
       </Route>
     </Routes>
   )
