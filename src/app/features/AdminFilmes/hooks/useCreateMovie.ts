@@ -16,7 +16,7 @@ export function useCreateMovie(onSuccess: () => void) {
         queryClient.invalidateQueries(["movies"]);
         toast({
           title: "Filme cadastrado com sucesso!",
-          icon: "success",
+          status: "success",
         });
         //   onClose();
         onSuccess();
@@ -27,7 +27,7 @@ export function useCreateMovie(onSuccess: () => void) {
         toast({
           title: "Erro ao cadastrar filme",
           description: errors.join(", ") || "Tente novamente mais tarde",
-          icon: "error",
+          status: "error",
         });
       });
   }

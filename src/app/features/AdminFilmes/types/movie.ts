@@ -8,7 +8,7 @@ export interface Movies {
   description: string;
   bannerUrl: string;
   imageUrl: string;
-  trailerUrl: string;
+  trailerLink: string;
   categoryId: string;
   releaseYear: string;
   downloads: Download[];

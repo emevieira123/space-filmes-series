@@ -6,7 +6,7 @@ import { DrawerCreateEditMovie } from "./components/Drawer/DrawerCreateEditMovie
 const columns = [
   { id: 1, name: "Nome do Filmes" },
   { id: 2, name: "Ano de Lançamento" },
-  { id: 2, name: "" },
+  { id: 3, name: "" },
 ];
 
 const data = [
