@@ -1,10 +1,10 @@
 import { Box, Img, Text } from "@chakra-ui/react";
-import { TypeSlideFilmes } from "../../types/TypeSlideFilmes";
+import { Movies } from "../../../app/features/AdminFilmes/types/movie";
 
 interface CardProps {
   index: number;
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
-  data: TypeSlideFilmes;
+  data: Movies;
 }
 
 export function CardSlide({ index, data, onClick }: CardProps) {

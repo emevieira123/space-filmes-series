@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Button,
   Flex,
@@ -11,11 +10,11 @@ import {
 import { Control, UseFormRegister, useFieldArray } from "react-hook-form";
 import { MdOutlineDelete } from "react-icons/md";
 import { FiPlus } from "react-icons/fi";
-import { Movies } from "../../types/movie";
+import { RequestMovie } from "../../types/movie";
 
 interface InputDynamicProps {
-  control?: Control<any>;
-  register: UseFormRegister<Movies>
+  control?: Control<RequestMovie>;
+  register: UseFormRegister<RequestMovie>
 }
 
 export function InputDynamic({ control, register }: InputDynamicProps) {

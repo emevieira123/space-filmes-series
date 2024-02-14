@@ -1,16 +1,21 @@
-import { Flex } from "@chakra-ui/react";
+import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import { Control, UseFormRegister } from "react-hook-form";
 import InputCustom from "../Input/InputCustom";
 import { InputDynamic } from "../Input/InputDynamic";
-import { Movies } from "../../types/movie";
+import { RequestMovie } from "../../types/movie";
 import { SelectCategory } from "../Select/SelectCategory";
 
 interface FormProps {
-  control: Control<Movies>;
-  register: UseFormRegister<Movies>;
+  control: Control<RequestMovie>;
+  register: UseFormRegister<RequestMovie>;
+  isLoading?: boolean;
 }
 
-export function FormCreateEditMovie({ control, register }: FormProps) {
+export function FormCreateEditMovie({ control, register, isLoading }: FormProps) {
+  if (isLoading) {
+    return <Text>Carregando...</Text>
+  }
+
   return (
     <Flex flexDirection="column" gap={4}>
       <InputCustom label="Nome do filme" name="name" control={control} />
@@ -32,6 +37,9 @@ export function FormCreateEditMovie({ control, register }: FormProps) {
         />
         <SelectCategory label="Categoria" name="categoryId" control={control} />
       </Flex>
+
+      <Divider />
+      <Heading fontSize="xl">Links para download</Heading>
 
       <InputDynamic control={control} register={register} />
     </Flex>

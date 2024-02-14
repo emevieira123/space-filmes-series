@@ -1,22 +1,25 @@
-import { useToast } from "@chakra-ui/react";
-import { useMutation } from "react-query";
-import { queryClient } from "../../../../main";
+import { RequestMovie } from "../types/movie";
 import { api } from "../../../../services/api";
 import Endpoints from "../../../../services/endpoints";
-import { RequestMovie } from "../types/movie";
 import useDrawerMovie from "./useDrawerMovie";
+import { queryClient } from "../../../../main";
+import { useMutation } from "react-query";
+import { useToast } from "@chakra-ui/react";
 
-export function useCreateMovie(onSuccess: () => void) {
+export function useUpdateMovie(onSuccess: () => void) {
+  const { hide, movieId } = useDrawerMovie();
   const toast = useToast();
-  const { hide } = useDrawerMovie();
 
-  async function createMovie(body: RequestMovie) {
+  async function updateMovie(body: RequestMovie) {
     return await api
-      .post(Endpoints.MOVIES, body)
+      .put(
+        Endpoints.MOVIE_ID.replace(":movieId", movieId! || body.movieId!),
+        body
+      )
       .then(() => {
         queryClient.invalidateQueries(["movies"]);
         toast({
-          title: "Filme cadastrado com sucesso!",
+          title: "Filme alterado com sucesso!",
           status: "success",
         });
         hide();
@@ -26,12 +29,12 @@ export function useCreateMovie(onSuccess: () => void) {
         const errors = Object.values(error?.response?.data?.errors || {});
         console.log(error);
         toast({
-          title: "Erro ao cadastrar filme",
+          title: "Erro ao alterar os dados do filme",
           description: errors.join(", ") || "Tente novamente mais tarde",
           status: "error",
         });
       });
   }
 
-  return useMutation(createMovie);
+  return useMutation(updateMovie);
 }

@@ -24,8 +24,6 @@ export function AdminTopBar() {
   return (
     <Grid
       h="4rem"
-      // align="center"
-      // justify="space-between"
       templateColumns="repeat(3, 1fr)"
       px="2rem"
       borderBottom="1px"

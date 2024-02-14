@@ -1,7 +1,7 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { SlideOneImage } from "../../../shared/components/SlideOneImage";
 import { SlideCards } from "../../../shared/components/SlideCards";
-import { TypeSlideFilmes } from "../../../shared/types/TypeSlideFilmes";
+import useGetMovies from "./hooks/useGetMovies";
 
 const bannerMock = [
   {
@@ -24,35 +24,18 @@ const bannerMock = [
   }
 ]
 
-const data: TypeSlideFilmes = {
-  movieId: 'jhgdjfhgsd',
-  name: 'Aquamam 2',
-  description: 'jhgdjfhgsd',
-  bannerUrl: 'http://alguma.coisa',
-  imageUrl: 'https://p2.trrsf.com/image/fget/cf/1200/1600/middle/images.terra.com/2023/09/14/182941645-aquaman-2-and-the-lost-kingdom.jpg',
-  trailerLink: 'http://alguma.coisa',
-  releaseYear: 2024
-}
-
 export default function Home() {
-  function criarArrayFake() {
-    const arrayFake = [];
-
-    for (let i = 1; i <= 20; i++) {
-      arrayFake.push({
-        ...data,
-        movieId: data.movieId + i,
-      });
-    }
-
-    return arrayFake;
-  }
+  const { data: movies, isLoading: isLoadingMovies } = useGetMovies();
 
   return (
     <Flex flexDirection="column">
       <SlideOneImage dataSource={bannerMock} />
 
-      <SlideCards dataSource={criarArrayFake()} loading={false} type="filmes" />
+      {
+        movies && !isLoadingMovies
+          ? <SlideCards dataSource={movies?.items} loading={isLoadingMovies} type="filmes" />
+          : <Text>Carregando...</Text>
+      }
     </Flex>
   );
 }

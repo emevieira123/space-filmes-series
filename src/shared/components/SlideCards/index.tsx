@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom"
 import { path } from "../../../infra/path"
 import { Box, Flex } from "@chakra-ui/react"
 import { Arrow } from "../Arrow"
-import { TypeSlideFilmes } from "../../types/TypeSlideFilmes"
 import { CardSlide } from "./CardSlide"
+import { Movies } from "../../../app/features/AdminFilmes/types/movie"
 
 interface SlideCardsProps {
-  dataSource: TypeSlideFilmes[];
+  dataSource: Movies[];
   loading?: boolean;
   type?: string;
 }
@@ -52,7 +52,7 @@ export function SlideCards({ dataSource, loading, type }: SlideCardsProps) {
                     key={i}
                     index={i}
                     data={movie}
-                    onClick={() => handleDetalhesFilme(movie.movieId)}
+                    onClick={() => handleDetalhesFilme(movie.movieId!)}
                   />
                 );
               })}
