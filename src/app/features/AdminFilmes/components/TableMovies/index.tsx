@@ -14,6 +14,7 @@ import {
 import { MdVisibility, MdModeEdit, MdDelete } from "react-icons/md";
 import { Movies } from "../../types/movie";
 import useDrawerMovie from "../../hooks/useDrawerMovie";
+import useModalDelete from "../../hooks/useModalDelete";
 
 interface TableMoviesProps {
   columns: any[];
@@ -22,6 +23,7 @@ interface TableMoviesProps {
 
 export function TableMovies({ columns, data }: TableMoviesProps) {
   const { showEdit } = useDrawerMovie();
+  const { show: showDelete } = useModalDelete();
 
   return (
     <TableContainer h="35.7rem">
@@ -65,6 +67,7 @@ export function TableMovies({ columns, data }: TableMoviesProps) {
                     _hover={{
                       color: "gray.400"
                     }}
+                    onClick={() => showDelete(d.movieId!, d.name)}
                   />
                 </Flex>
               </Td>

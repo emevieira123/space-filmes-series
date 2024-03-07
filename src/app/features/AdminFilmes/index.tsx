@@ -9,6 +9,7 @@ import usePagination from "./hooks/usePagination";
 import { FieldValues, useForm } from "react-hook-form";
 import { useState } from "react";
 import { SelectCategory } from "./components/Select/SelectCategory";
+import { ModalDeleteMovie } from "./components/Modal/ModalDeleteMovie";
 
 const columns = [
   { id: 1, name: "Nome do Filmes" },
@@ -84,6 +85,7 @@ export default function AdminFilmes() {
 
 
       <DrawerCreateEditMovie />
+      <ModalDeleteMovie />
     </Flex>
   );
 }
